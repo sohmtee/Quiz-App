@@ -1,0 +1,391 @@
+body{
+  background-color: dimgray;
+  /* background-image: url("../images/download.jpeg"); */
+  font-family: 'Barlow', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+*{
+  box-sizing: border-box;
+}
+.quizBackground1{
+  height: 350px;
+  width: 600px;
+  background-color: bisque;
+  margin: 30px auto;
+  border-radius: 8px;
+  padding: 20px 30px;
+  display: none;
+}
+
+.startBackground{
+  text-align: center;
+}
+
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.0;}
+}
+
+.blink{
+  height: 30px;
+  width: 100%;
+  text-align: center;
+  text-decoration: blink;
+  -webkit-animation-name: blinker;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-direction: alternate;
+}
+
+.instructions{
+  font-size: 20px;
+  font-weight: 700;
+  animation: blink 1s linear infinite;
+}
+
+
+
+.category{
+  float: left;
+  width: 100%;
+
+}
+.category h4{
+  /* padding: 3px 30px; */
+  text-align: center;
+}
+
+.category ul{
+  list-style: none;
+  padding-left: 0px;
+  margin: none;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.category ul li{
+  display: inline-block;
+  background-color: white;
+  min-width: 45%;
+  padding: 8px;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.category ul li:hover{
+  background-color: lightgray;
+}
+
+.category ul li:focus{
+  background-color: gray;
+}
+.startQuiz{
+  text-align: center;
+}
+
+.startQuiz .startButton{
+  border-radius: 20px;
+  background-color: brown;
+  border: 2px solid brown;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 12px;
+}
+.startButton:focus{
+  outline: none;
+}
+
+.quizBackground2{
+  height: 460px;
+  width: 600px;
+  background-color: bisque;
+  margin: 30px auto;
+  border-radius: 8px;
+  padding: 50px 30px;
+  /* display: none; */
+}
+
+
+.statistics{
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.1rem;
+  padding-top: 0;
+  padding-bottom: 35px;
+  width: 100%;
+}
+
+.quiz-time{
+  flex-basis: 50%;
+  max-width: 50%;
+  text-align: left;
+}
+
+.remainingTime{
+  height: 35px;
+  width: 35px;
+  border: 2px solid #059e4c;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+  color: #059e4c;
+  font-weight: 800;
+}
+.scoreCard{
+  flex-basis: 50%;
+  max-width: 50%;
+  text-align: right;
+}
+
+.correct-answers{
+  font-weight: 800;
+}
+
+.quizQuestions{
+  padding: 25px;
+  min-height: 60px;
+  background-color: white;
+  border-radius: 8px;
+  float: left;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+.question-text{
+  /* font-family: monospace; */
+  font-size: 25px;
+  color: #665b49;
+  font-weight: 800;
+}
+
+.current-question-number{
+  height: 50px;
+  width: 50px;
+  border: 2px solid bisque;
+  background-color: white;
+  font-size: 20px;
+  /* font-family: monospace; */
+  color: #665b49;
+  border-radius: 50%;
+  line-height: 50px;
+  font-weight: 800;
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  z-index: 1;
+  padding-bottom: 10px;
+}
+
+
+.options-group{
+  /* float: left; */
+  width: 100%;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+ .options-group .options-list{
+  display: inline-block;
+  background-color: white;
+  min-width: 40%;
+  padding: 15px;
+  margin-top: 25px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 0 gray;
+  opacity: 0;
+  animation: zoom .3s linear forwards;
+}
+
+@keyframes zoom {
+  0%{
+  transform: scale(0.8);
+  }
+  100%{
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.options-group .answered-already{
+  pointer-events: none;
+}
+
+.options-group .correct{
+  background-color: green;
+  border-color: green;
+  color: white;
+  animation: accord 1s linear;
+}
+
+@keyframes accord {
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.1);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+.options-group .wrong{
+  background-color: red;
+  border-color: red;
+  color: white;
+  animation: shake 1s linear;
+}
+
+@keyframes shake {
+  0%, 30%, 50%{
+    transform: translateX(10px);
+  }
+  20%, 40%{
+    transform: translateX(-10px);
+  }
+  60%{
+    transform: translateX(-7px);
+  }
+  70%{
+    transform: translateX(7px);
+  }
+  80%{
+    transform: translateX(-4px);
+  }
+  90%{
+    transform: translateX(4px);
+  }
+  100%{
+    transform: translateX(0px);
+  }
+
+}
+.options-group .options-list:active{
+  box-shadow: 0 3px 0 transparent;
+}
+
+.access{
+  width: 100%;
+}
+.accessQuestions{
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 12px;
+  color: white;
+  width: 15%;
+  outline: none;
+  cursor: pointer;
+}
+.next{
+  display: none;
+  margin-left: 0;
+  background-color: green;
+}
+
+.access .show{
+  display: inline-block;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  0%{
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.seeResult{
+  background-color: orange;
+  float: right;
+  display: none;
+  width: 15%;
+
+}
+
+
+
+.quizBackground3{
+  background-color: bisque;
+  height: 450px;
+  width: 550px;
+  border: 2px solid bisque;
+  border-radius: 8px;
+  margin: 30px auto;
+  text-align: center;
+  display: none;
+}
+
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.0;}
+}
+
+.summary{
+  padding-top: 30px;
+  font-weight: 800;
+  font-size: 25px;
+  color: red;
+  text-decoration: blink;
+  -webkit-animation-name: blinker;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-direction: alternate;
+}
+
+.QuestionAndAnswerSummary{
+  padding: 10px;
+  font-size: 20px;
+  /* margin: 10px; */
+}
+
+.startAndEndButton{
+  padding: 10px;
+}
+
+.startAgainBtn{
+  background-color: green;
+  border: 2px solid green;
+  border-radius: 20px;
+  padding: 10px;
+  color: white;
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+}
+
+.startAgainBtn:hover{
+  background-color: #059e4c;
+  border: 2px solid#059e4c;
+}
+
+.homeBtn{
+  color: white;
+  background-color: brown;
+  border: 2px solid brown;
+  border-radius: 20px;
+  font-size: 15px;
+  padding: 10px;
+  margin-left: 50px;
+  cursor: pointer;
+  outline: none;
+}
+
+.home:hover{
+  background-color: lightbrown;
+}
